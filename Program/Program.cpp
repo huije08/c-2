@@ -3,140 +3,55 @@
 using namespace std;
 
 template<typename T>
-class SingleLinkedList
+class DoubleLinkedList
 {
 public:
-	SingleLinkedList()
+	
+	DoubleLinkedList()
 	{
-		size = 0;
 		head = nullptr;
+		tail = nullptr;
+		size = 0;
 	}
 
-	void push_front(T data)
+	void push_fornt(T data)
 	{
 		Node* newNode = new Node;
 
 		if (head == nullptr)
 		{
 			head = newNode;
+			tail = newNode;
 
 			newNode->data = data;
 			newNode->next = nullptr;
 		}
 		else
 		{
-			newNode->data = data;
-			newNode->next = head;
-
-			head = newNode;
-		}
-
-	}
-
-	void push_back(T data)
-	{
-		Node* newNode = new Node;
-
-		if (head == nullptr)
-		{
-			head = newNode;
-
-			newNode->data = data;
-			newNode->next = nullptr;
-		}
-		else
-		{
-			Node* currentNode = head;
-
-			while (currentNode->next != nullptr)
-			{
-				currentNode = currentNode->next;
-			}
-
-			currentNode->next = newNode;
-
-			newNode->data = data;
-			newNode->next = nullptr;
-		}
-
-		size++;
-		
-	}
-
-	void pop_front()
-	{
-		if (head == nullptr)
-		{
-			cout << "Linked List is Empty" << endl;
-		}
-		else
-		{
-			Node* deleteNode = head;
-
-			head = deleteNode->next;
-
-			delete deleteNode;
-			size--;
-		}
-
-		
-	}
-
-	void show()
-	{
-		Node * currentNode = head;
-
-		while (currentNode != nullptr)
-		{
-			cout << currentNode->data << " ";
-
-			currentNode = currentNode->next;
-		}
-	}
-
-	void pop_back()
-	{
-
-
-		if (head == nullptr)
-		{
-			cout << "Linked List is Empty" << endl;
-		}
-		else
-		{
-		
+			newNode
 		}
 
 
 	}
-
 private:
 	int size;
 
 	struct Node
 	{
 		T data;
-		Node* next;
-
+		Node * previous;
+		Node * next;
 	};
 
 	Node* head;
+	Node* tail
 
 };
 
 
-
-
 int main()
 {
-	SingleLinkedList<int> singleLinkedList;
 
-	singleLinkedList.push_front(10);
-	singleLinkedList.push_front(20);
-	singleLinkedList.push_back(5);
-	singleLinkedList.push_back(10);
-
-	singleLinkedList.show();
 
 	return 0;
 }
