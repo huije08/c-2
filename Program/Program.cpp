@@ -18,21 +18,95 @@ public:
 	{
 		Node* newNode = new Node;
 
+		newNode->data = data;
+		newNode->next = nullptr;
+		newNode->previous = nullptr;
+
 		if (head == nullptr)
 		{
 			head = newNode;
 			tail = newNode;
-
-			newNode->data = data;
-			newNode->next = nullptr;
 		}
 		else
 		{
-			newNode
+			head->previous = newNode;
+			newNode->next = head;
+
+			head = newNode;
 		}
 
+		size++;
 
 	}
+
+	void push_back(T data)
+	{
+		Node* newNode = new Node;
+		newNode->data = data;
+		newNode->next = nullptr;
+		newNode->previous = nullptr;
+
+		if (tail == nullptr)
+		{
+			head = newNode;
+			tail = newNode;
+		}
+		else
+		{
+			tail->next = newNode;
+			newNode->previous = tail;
+
+			tail = newNode;
+		}
+		size++;
+	}
+
+	void show()
+	{
+		Node* currentNode = head;
+
+		while (currentNode != nullptr)
+		{
+			cout << currentNode->data << " ";
+
+			currentNode = currentNode->next;
+		}
+	}
+
+	void pop_front()
+	{
+		if (head == nullptr)
+		{
+			cout << "Linked List is Empty" << endl;
+		}
+		else
+		{
+			Node* deleteNode = head;
+
+			if (head==tail)
+			{
+				head = nullptr;
+				tail = nullptr;
+			}
+			else
+			{
+				deleteNode->next->previous = nullptr;
+				head = deleteNode->next;		
+			}
+
+			delete deleteNode;
+			size--;
+		}
+	}
+	
+	~DoubleLinkedList()
+	{
+		while (head != nullptr)
+		{
+			pop_front();
+		}
+	}
+
 private:
 	int size;
 
@@ -44,13 +118,22 @@ private:
 	};
 
 	Node* head;
-	Node* tail
+	Node* tail;
 
 };
 
 
 int main()
 {
+	DoubleLinkedList<int> doubleLinkedList;
+
+	doubleLinkedList.push_fornt(30);
+	doubleLinkedList.push_fornt(10);
+	doubleLinkedList.push_fornt(20);
+	
+	doubleLinkedList.pop_front();
+
+	doubleLinkedList.show();
 
 
 	return 0;
