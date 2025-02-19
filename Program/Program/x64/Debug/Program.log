@@ -1,2 +1,2 @@
 ﻿  Program.cpp
-LINK : fatal error LNK1168: cannot open C:\Users\huije\OneDrive\바탕 화면\c-2\Program\x64\Debug\Program.exe for writing
+  Program.vcxproj -> C:\Users\huije\OneDrive\바탕 화면\c-2\Program\x64\Debug\Program.exe
