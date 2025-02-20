@@ -1,2 +1,12 @@
 ﻿  Program.cpp
+C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(57,10): warning C4553: '==': result of expression not used; did you intend '='?
+      C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(57,10):
+      the template instantiation context (the oldest one first) is
+          C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(98,24):
+          see reference to class template instantiation 'CircleLinkedList<int>' being compiled
+          C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(45,7):
+          while compiling class template member function 'void CircleLinkedList<int>::pop_front(void)'
+              C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(104,28):
+              see the first reference to 'CircleLinkedList<int>::pop_front' in 'main'
+  
   Program.vcxproj -> C:\Users\huije\OneDrive\바탕 화면\c-2\Program\x64\Debug\Program.exe
