@@ -59,6 +59,34 @@ public:
 			delete [ ] pointer;
 		}
 	}
+
+	void Append(const char* word)
+	{
+		size = strlen(pointer) + strlen(word + 1);
+
+		char* newPointer = new char;
+
+		for (int i = 0; i < strlen(pointer); i++)
+		{
+			newPointer[i] = pointer[i];
+		}
+		for (int i = 0; i < strlen(word); i++)
+		{
+			newPointer[strlen(pointer) + 1] = word[i];
+		}
+		
+		if (pointer != nullptr)
+		{
+			delete[] pointer;
+		}
+
+		pointer = newPointer;
+	}
+
+	long long Find(const char* word)
+	{
+		
+	}
 	 
 };
 
@@ -66,20 +94,29 @@ int main()
 {
 	String string;
 
-	string = "key";
+	//string = "key";
+	//
+	//for (int i = 0; i < string.Size(); i++)
+	//{
+	//	cout << string[i];
+	//}
+	//cout << endl;
+	//
+	//string = "apple";
+	//
+	//for (int i = 0; i < string.Size(); i++)
+	//{
+	//	cout << string[i];
+	//}
+	//
+	//string.Append(" Four");
+	
+	std::string name;
 
-	for (int i = 0; i < string.Size(); i++)
-	{
-		cout << string[i];
-	}
-	cout << endl;
+	name = "Alistar";
 
-	string = "apple";
+	cout << name.find("so");
 
-	for (int i = 0; i < string.Size(); i++)
-	{
-		cout << string[i];
-	}
 	
 	return 0;
 }
