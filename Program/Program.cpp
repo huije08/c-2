@@ -1,122 +1,67 @@
 #include <iostream>
+#define SIZE 6
 using namespace std;
 
-class String
+template <typename KEY, typename VALUE>
+class HashTable
 {
 private:
-	int size;
-	char* pointer;
+	struct Node
+	{
+		KEY key;
+		VALUE value;
 
+		Node* next;
+
+	};
+
+	struct Bucket
+	{
+		int count;
+		Node * head;
+	};
+
+	Bucket bucket[SIZE]
 public:
-	String()
+
+	HashTable()
 	{
-		size = 0;
-		pointer = nullptr;
-	}
-
-	void operator = (const char * word)
-	{
-		size = strlen(word) + 1;
-
-		if (pointer == nullptr)
+		for (int i = 0; i < SIZE; i++)
 		{
-			pointer = new char[size];
-
-			for (int i = 0; i < size; i++)
-			{
-				pointer[i] = word[i];
-			}
-		}
-		else
-		{
-			char* newPointer = new char[size];
-
-			for (int i = 0; i < size; i++)
-			{
-				newPointer[i] = word[i];
-			}
-			
-			delete [ ] pointer;
-
-			pointer = newPointer;
+			bucket[i].count = 0;
+			bucket[i].head = nullptr;
 		}
 	}
 
-	const int& Size()
+	template <typename T>
+	int HashFunction(T key)
 	{
-		return size - 1;
+		unsigned int hashIndex = (int)key % SIZE;
+		return hashIndex;
 	}
 
-	const char& operator [] (const int& index)
+
+	template<>
+	const int& HashFunction(const char* key)
 	{
-		return pointer[index];
-	}
+		int hash = 0;
 
-	~String()
-	{
-		if (pointer != nullptr)
+		for (int i = 0; i < strlen(key); i++)
 		{
-			delete [ ] pointer;
-		}
-	}
-
-	void Append(const char* word)
-	{
-		size = strlen(pointer) + strlen(word + 1);
-
-		char* newPointer = new char;
-
-		for (int i = 0; i < strlen(pointer); i++)
-		{
-			newPointer[i] = pointer[i];
-		}
-		for (int i = 0; i < strlen(word); i++)
-		{
-			newPointer[strlen(pointer) + 1] = word[i];
-		}
-		
-		if (pointer != nullptr)
-		{
-			delete[] pointer;
+			hash += key[i];
 		}
 
-		pointer = newPointer;
+		int hashIndex = hash % SIZE;
+
+		return hashIndex;
 	}
 
-	long long Find(const char* word)
-	{
-		
-	}
-	 
 };
+
+
 
 int main()
 {
-	String string;
 
-	//string = "key";
-	//
-	//for (int i = 0; i < string.Size(); i++)
-	//{
-	//	cout << string[i];
-	//}
-	//cout << endl;
-	//
-	//string = "apple";
-	//
-	//for (int i = 0; i < string.Size(); i++)
-	//{
-	//	cout << string[i];
-	//}
-	//
-	//string.Append(" Four");
-	
-	std::string name;
-
-	name = "Alistar";
-
-	cout << name.find("so");
-
-	
 	return 0;
 }
