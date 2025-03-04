@@ -1,4 +1,7 @@
 ﻿  Program.cpp
-C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(19,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(47,1): warning C4172: returning address of local variable or temporary 
-  Program.vcxproj -> C:\Users\huije\OneDrive\바탕 화면\c-2\Program\x64\Debug\Program.exe
+C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(25,1): error C2143: syntax error: missing ';' before 'public'
+      C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(25,1):
+      the template instantiation context (the oldest one first) is
+          C:\Users\huije\OneDrive\바탕 화면\c-2\Program\Program.cpp(6,7):
+          while compiling class template 'HashTable'
+  

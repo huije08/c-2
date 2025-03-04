@@ -21,7 +21,7 @@ private:
 		Node * head;
 	};
 
-	Bucket bucket[SIZE]
+	Bucket bucket[SIZE];
 public:
 
 	HashTable()
@@ -34,7 +34,7 @@ public:
 	}
 
 	template <typename T>
-	int HashFunction(T key)
+	const int & HashFunction(T key)
 	{
 		unsigned int hashIndex = (int)key % SIZE;
 		return hashIndex;
@@ -42,7 +42,7 @@ public:
 
 
 	template<>
-	const int& HashFunction(const char* key)
+	const int & HashFunction(const char* key)
 	{
 		int hash = 0;
 
@@ -56,12 +56,72 @@ public:
 		return hashIndex;
 	}
 
+	Node * CreateNode(KEY key, VALUE value)
+	{
+		Node* newNode = new Node;
+
+		newNode->key = key;
+		newNode->value = value;
+		newNode->next = nullptr;
+
+		return newNode;
+	}
+
+	void Insert(KEY key, VALUE value)
+	{
+		int hashIndex = HashFunction(key);
+
+		Node* newNode = CreateNode(key, value);
+
+		if (bucket[hashIndex].count == 0)
+		{
+			bucket[hashIndex].head = newNode;
+		}
+		else
+		{
+			newNode->next = bucket[hashIndex].head;
+
+			bucket[hashIndex].head = newNode;
+		}
+
+		bucket[hashIndex].count++;
+	}
+
+	~HashTable()
+	{
+		for (int i = 0; i < SIZE; i++)
+		{
+			Node* deleteNode = bucket[i].head;
+			Node* nextNode = bucket[i].head;
+
+			if (bucket[i].head == nullptr)
+			{
+				continue;
+			}
+			else
+			{
+				while (nextNode != nullptr)
+				{
+					nextNode = deleteNode->next;
+
+					delete deleteNode;
+
+					deleteNode = nextNode;
+				}
+			}
+		}
+	}
 };
 
 
 
 int main()
 {
+
+	HashTable<const char*, int> hashTable;
+
+	hashTable.Insert("Sword", 10000);
+	hashTable.Insert("Armor", 5000);
 
 	return 0;
 }
