@@ -156,19 +156,42 @@ public:
 			}
 		}
 	}
+	 
+	void pop()
+	{
+		if (index <= 0)
+		{
+			cout << " Priority Queue is Empty" << endl;
+		}
+		else
+		{
+			container = container[index];
 
+			container[index--]
+		}
+
+		
+	}
+
+	const bool& empty()
+	{
+		if (index <= 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 };
 
 
 
 int main()
 {
+	PriorityQueue<int> 
 
-	HashTable<const char*, int> hashTable;
-
-	hashTable.Insert("Sword", 10000);
-	hashTable.Insert("Armor", 5000);
-
-	hashTable.Remove("Hat");
+	
 	return 0;
-}
+}.

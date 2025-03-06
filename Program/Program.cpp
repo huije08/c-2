@@ -21,6 +21,33 @@ public:
 		}
 	}
 
+	void push(T data)
+	{
+		if (index + 1 >= SIZE)
+		{
+			cout << "Priority Queue Overflow" << endl;
+		}
+		else
+		{
+			container[++index] = data;
+
+			int child = index;
+
+			int parent = child / 2;
+
+			while (child > 1)
+			{
+				if (container[parent] < container[child]) {
+					std::swap(container[parent], container[child]);
+				}
+
+				child = parent;
+				parent = child / 2;
+			}
+		}
+	}
+
+	con
 };
 
 
