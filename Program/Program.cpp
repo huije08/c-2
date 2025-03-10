@@ -1,71 +1,71 @@
 #include <iostream>
-#include <queue>
-#define SIZE 5
+#define SIZE 10
 using namespace std;
 
 template <typename T>
-class PriorityQueue
+class AdjacencyList
 {
 private:
-	int index;
-	T container[SIZE];
-
-public:
-	PriorityQueue()
+	struct Node
 	{
-		index = 0;
+		T data;
+		Node* next;
+
+		Node(T data, Node* link = nullptr)
+		{
+			this->data = data;
+			next = link;
+		}
+	};
+
+	int size;
+	T vertex[SIZE];
+	Node* list[SIZE];
+public:
+	AdjacencyList()
+	{
+		size = 0;
 
 		for (int i = 0; i < SIZE; i++)
 		{
-			container[i] = NULL
+			list[i] = NULL;
+			vertex[i] = NULL;
 		}
+
 	}
 
 	void push(T data)
 	{
-		if (index + 1 >= SIZE)
+		if (size >= SIZE)
 		{
-			cout << "Priority Queue Overflow" << endl;
+			cout << "Adjacency List Overflow" << endl;
 		}
 		else
 		{
-			container[++index] = data;
-
-			int child = index;
-
-			int parent = child / 2;
-
-			while (child > 1)
-			{
-				if (container[parent] < container[child]) {
-					std::swap(container[parent], container[child]);
-				}
-
-				child = parent;
-				parent = child / 2;
-			}
+			vertex[size++] = data;
+		} 
+	}
+	
+	void edge(int i, int j)
+	{
+		if (size <= 0)
+		{
+			cout << "Adjacency List is Empty";
+		}
+		else if
+		{
+			cout << "Index Out of Range" << endl;
+		}
+		else
+		{
+			list[i] = new Node(vertex[j], list[i]);
+			list[i] = new Node(vertex[i], list[j]);
 		}
 	}
-
-	con
 };
-
 
 
 int main()
 {
-	priority_queue<int> priorityQueue;
 
-	priorityQueue.push(30);
-	priorityQueue.push(2);
-	priorityQueue.push(77);
-	priorityQueue.push(15);
-	
-	while (priorityQueue.empty() == false)
-	{
-		cout << priorityQueue.top() >> " ";
-
-		priorityQueue.pop();
-	}
-	return 0;
 }
